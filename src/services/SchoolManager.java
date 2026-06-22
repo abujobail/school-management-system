@@ -87,7 +87,7 @@ public class SchoolManager {
 
     public void deleteStudentById(int id) {
         for (Student x : st) {
-            if (id == x.getId()) {
+            if (id == x.getId()) {s
                 st.remove(x);
                 System.out.println("Student deleted successfully \n");
                 return;
