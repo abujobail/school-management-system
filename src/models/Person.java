@@ -25,8 +25,8 @@ public abstract class Person {
         return age;
     }
 
-    public void setName(String n) {
-        this.name = n;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setAge(int age) {
@@ -36,8 +36,9 @@ public abstract class Person {
     public void setId(int id) {
         this.id = id;
     }
-    public void displayInfo(){
-System.out.println("my name is "+ getName() + " "+ " my age "+ getAge()+" "+ " my id "+ getId());
+
+    public void displayInfo() {
+        System.out.println("my name is " + getName() + " " + " my age " + getAge() + " " + " my id " + getId());
     }
 
 }
