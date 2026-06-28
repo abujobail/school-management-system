@@ -15,8 +15,18 @@ public class SchoolManager {
         this.tc = new ArrayList<>();
     }
 
+    public ArrayList<Student> getStudents() { // this return full student arraylist
+        return this.st;
+
+    }
+
+    public ArrayList<Teacher> getTeachers() { // this return full teachers list
+        return this.tc;
+
+    }
+
     public void addStudent(Student student) {
-        st.add(student);
+        st.add(student);// student reference pass
         System.out.println("student added successfully\n");
     }
 
@@ -68,6 +78,7 @@ public class SchoolManager {
         for (Teacher x : tc) {
             if (x.getId() == id) {
                 System.out.println(x.getName() + " teaches " + x.getSubject());
+                // x.displayInfo(); //updated
                 return;
             }
         }
@@ -87,7 +98,8 @@ public class SchoolManager {
 
     public void deleteStudentById(int id) {
         for (Student x : st) {
-            if (id == x.getId()) {s
+            if (id == x.getId()) {
+
                 st.remove(x);
                 System.out.println("Student deleted successfully \n");
                 return;
