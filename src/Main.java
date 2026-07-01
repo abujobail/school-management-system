@@ -23,8 +23,8 @@ public class Main {
             System.out.println("7 : --- Update Student GPA --- ");
             System.out.println("8 : --- Delete Student ---");
             System.out.println("9 : --- Delete Teacher ---");
-            System.out.println("10 : --- Taking Attendance ---");//updated
-            System.out.println("11 : --- Taking Teacher Attendance ---");//updated 
+            System.out.println("10 : --- Taking Attendance ---");// updated
+            System.out.println("11 : --- Taking Teacher Attendance ---");// updated
             System.out.println("12 : --- EXIT ---");
 
             System.out.println(" Enter Your Choice ");
@@ -65,7 +65,8 @@ public class Main {
 
                     System.out.println(" Enter Teacher Id ");
                     int tId = sc.nextInt();
-                    sc.nextLine();//update because when i am typing int then remain buffer ,,then i set up this line 
+                    sc.nextLine();// update because when i am typing int then remain buffer ,,then i set up this
+                                  // line
 
                     System.out.println(" Enter Teacher Subject ");
                     String tSubject = sc.nextLine();
@@ -85,7 +86,7 @@ public class Main {
                     System.out.print("Enter Student ID to search: ");
                     int searchSId = sc.nextInt();
                     school.searchStudentById(searchSId);
-                    break; //updated 
+                    break; // updated
                 }
                 case 6: {
                     System.out.print("Enter Teacher ID to find subject: ");
@@ -115,23 +116,20 @@ public class Main {
                 }
                 case 10: {
                     System.out.println("\n--- Taking Student Attendance ---");
-                   
+
                     System.out.print("Enter Student ID: ");
                     int attSId = sc.nextInt();
                     sc.nextLine();
-                    
-                   
+
                     activity.takeStudentsAttendance(attSId, school);
                     break;
                 }
                 case 11: {
                     System.out.println("\n--- Taking Teacher Attendance ---");
-                    
+
                     System.out.print("Enter Teacher ID: ");
                     int attTId = sc.nextInt();
-                  sc.nextLine();
-
-                    
+                    sc.nextLine();
 
                     activity.takeTeachersAttendance(attTId, school);
                     break;

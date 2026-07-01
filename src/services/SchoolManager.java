@@ -93,6 +93,7 @@ public class SchoolManager {
                 return;
             }
         }
+  System.out.println("Student with ID " + id + " not found!\n");
 
     }
 
