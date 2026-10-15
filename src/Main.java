@@ -1,5 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import dao.StudentDAOImpl;
 import models.Student;
 import models.Teacher;
 import services.SchoolActivity;
@@ -10,6 +13,7 @@ public class Main {
 
         SchoolManager school = new SchoolManager();
         SchoolActivity activity = new SchoolActivity();
+        StudentDAOImpl studentDAO = new StudentDAOImpl();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -50,7 +54,14 @@ public class Main {
 
                     Student st = new Student(sName, sAge, sId, sGPA);
 
-                    school.addStudent(st);
+                    List<Student>list=new ArrayList<>();
+                    list.add(st);
+                    boolean isSaved= studentDAO.saveStudentsBatch(list);
+                    if(isSaved){
+                        System.out.println("✅ Student saved to Database successfully!");
+                    }else {
+                        System.out.println(" ❌ Failed to save student to Database.");
+                    }
                     break;
                 }
 
@@ -75,7 +86,16 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    school.viewAllStudents();
+//                    school.viewAllStudents();
+
+                    List<Student>students=studentDAO.getAllStudent();
+                    if(students.isEmpty()){
+                        System.out.println("⚠️ No students found in the database.");
+                    }else{
+                        for(Student s:students){
+                            System.out.println(s);
+                        }
+                    }
                     break;
                 }
                 case 4: {
@@ -84,8 +104,15 @@ public class Main {
                 }
                 case 5: {
                     System.out.print("Enter Student ID to search: ");
-                    int searchSId = sc.nextInt();
-                    school.searchStudentById(searchSId);
+                  int searchSId = sc.nextInt();
+
+                 Student student= studentDAO.getStudentById(searchSId);
+                if(student!=null){
+                    System.out.println("student founded"+student);
+                }else {
+                    System.out.println("student not founded! this id"+searchSId);
+                }
+//                    school.searchStudentById(searchSId);
                     break; // updated
                 }
                 case 6: {

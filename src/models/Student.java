@@ -43,4 +43,8 @@ public class Student extends Person {
         // এরপর স্টুডেন্টের নিজস্ব GPA প্রিন্ট করবে
         System.out.println(" my gpa is " + getGpa());
     }
+    @Override
+    public String toString() {
+        return "ID: " + getId() + ", Name: " + getName() + ", Age: " + getAge() + ", GPA: " + getGpa();
+    }
 }
