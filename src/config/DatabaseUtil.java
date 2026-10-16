@@ -20,8 +20,8 @@ public class DatabaseUtil {
     }
     public  static Connection getConnection() throws SQLException {
         //establish connection
-        String url="jdbc:mysql://localhost:3306/jdbclearning";
-        String user="jobail";
+        String url="jdbc:mysql://localhost:3306/school_db";
+        String user="root";
         String password="56224jobailabu";
         return DriverManager.getConnection(url,user,password);
     }

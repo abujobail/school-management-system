@@ -24,7 +24,7 @@ public class Main {
             System.out.println("4 : ---View All Teachers ---");
             System.out.println("5 : --- Search Student By Id ---");
             System.out.println("6 : --- Search Teacher Subject ---");
-            System.out.println("7 : --- Update Student GPA --- ");
+            System.out.println("7 : --- Update Student --- ");
             System.out.println("8 : --- Delete Student ---");
             System.out.println("9 : --- Delete Teacher ---");
             System.out.println("10 : --- Taking Attendance ---");// updated
@@ -122,17 +122,61 @@ public class Main {
                     break;
                 }
                 case 7: {
-                    System.out.print("Enter Student ID to update GPA: ");
+                    System.out.print("Enter Student ID : ");
                     int updateId = sc.nextInt();
-                    System.out.print("Enter New GPA: ");
-                    double newGpa = sc.nextDouble();
-                    school.updateStudentGpa(updateId, newGpa);
+                     sc.nextLine();
+
+                    Student student=studentDAO.getStudentById(updateId);
+                    if(student!=null){
+                        System.out.println("--- Current Info: " + student + " ---");
+
+                        // ২. নতুন তথ্য ইনপুট নেওয়া
+                        System.out.print("Enter New Name: ");
+                        String newName = sc.nextLine();
+
+                        System.out.print("Enter New Age: ");
+                        int newAge = sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Enter New GPA: ");
+                        double newGpa = sc.nextDouble();
+                        sc.nextLine();
+
+                        student.setName(newName);
+                        student.setAge(newAge);
+                        student.setGpa(newGpa);
+                         boolean isUpdated= studentDAO.updateStudent(student);
+
+                         if(isUpdated){
+                             System.out.println("✅ Student information updated successfully in Database!");
+                         }else {
+                             System.out.println("❌ Failed to update student information.");
+                         }
+                    }
+
+
+                    else{
+                        System.out.println("student not founded! this id"+updateId);
+                    }
                     break;
                 }
                 case 8: {
                     System.out.print("Enter Student ID to delete: ");
                     int delSId = sc.nextInt();
-                    school.deleteStudentById(delSId);
+                    Student student=studentDAO.getStudentById(delSId);
+                    if(student!=null){
+                        System.out.println("--- Current Info: " + student + " ---");
+                        boolean delete= studentDAO.deleteStudentById(student.getId());//just delSid can be write,,কারণ ইউজার থেকে নেওয়া delSId আর student.getId() একই কথা।
+                        if(delete){
+                            System.out.println(" ✅ Student deleted successfully from Database!");
+                        }else{
+                            System.out.println("Student not deleted successfully in Database ");
+                        }
+                    }
+                    else{
+                        System.out.println("❌ Student not found with ID: " + delSId);
+                    }
+
                     break;
                 }
                 case 9: {
